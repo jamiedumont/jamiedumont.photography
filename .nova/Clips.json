@@ -1,0 +1,15 @@
+{
+  "clips" : [
+    {
+      "children" : [
+        {
+          "content" : "<link rel=\"canonical\" href=\"https:\/\/jamiedumont.com\/$0\" \/>",
+          "name" : "Canonical Link",
+          "scope" : "editor",
+          "syntax" : "html"
+        }
+      ],
+      "name" : "SEO"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "index.ignored_file_patterns" : [
+    ".nova\/*",
+    ".git\/*",
+    "build\/*",
+    "config.codekit3",
+    "node_modules"
+  ],
+  "workspace.art_style" : 0,
+  "workspace.color" : 0,
+  "workspace.name" : "jamiedumont.photography",
+  "workspace.preview_append_paths" : false,
+  "workspace.preview_root" : "build",
+  "workspace.preview_type" : "custom",
+  "workspace.preview_url" : "http:\/\/jamies-macbook-pro.local:5757"
+}

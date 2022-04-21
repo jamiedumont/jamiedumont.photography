@@ -1,0 +1,11 @@
+{
+  "identifier" : "94AE4B73-EE2F-454B-B608-8D11D98C6A0E",
+  "ignoredFilePatterns" : [
+    "node_modules"
+  ],
+  "localPath" : "build",
+  "remotePath" : "\/home\/forge\/publish.jamiedumont.com",
+  "remoteURL" : "publish.jamiedumont.com",
+  "server" : "Laravel Forge",
+  "usesPublishing" : true
+}

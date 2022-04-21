@@ -1,0 +1,2 @@
+Deploy with `rsync -avzh build/ hetzner:/var/www/jamiedumont.photography/`
+Generate sitemap with `fd -e html --base-directory build | awk -F '.' '{print "https://jamiedumont.photography"$2}' | sed 's/index//g' | npx sitemap > build/sitemap.xml`
