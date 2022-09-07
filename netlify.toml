@@ -1,7 +1,7 @@
 [build]
     base    = ""
     publish = "public"
-    command = "zola build"
+    command = "zola build --base-url $DEPLOY_URL"
 
 [build.environment]
     ZOLA_VERSION = "0.15.3"
