@@ -1,0 +1,9 @@
+{% macro image(path) %}
+  <picture>
+    {% set image = resize_image(path=path, width=640, op="fit_width", format="webp", quality=75) %}
+    <source srcset="{{ image.url }} 640w" type="image/webp">
+    {% set image = resize_image(path=path, width=640, op="fit_width", format="jpg", quality=75) %}
+    <source srcset="{{ image.url }} 640w" type="image/jpeg">
+    <img src="{{ image.url }}" alt="">
+  </picture>
+{% endmacro image %}

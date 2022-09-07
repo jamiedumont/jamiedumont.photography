@@ -1,3 +1,5 @@
+{% import "macros/image.html" as im %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +96,7 @@
     </nav>
   </header>
   {% endblock header %}
-  <main class="stack">
+  <main class="stack stack-l">
     
     {% block content %}
 
@@ -114,7 +116,17 @@
       </div>
     </section>
 
-    <section>
+    <section class="switcher">
+      <div class="masonry-column">
+        {{ im::image(path="stories/ollie-cooper/images/L1001832.jpg") }}
+        {{ im::image(path="portfolio/people/images/SPS-025-012 018.jpg") }}
+      </div>
+      <div class="masonry-column">
+        {{ im::image(path="stories/will-hp/images/BB6A6733.jpg") }}
+      </div>
+      <div class="masonry-column">
+        {{ im::image(path="portfolio/people/images/BB6A6767.jpg") }}
+      </div>
     </section>
     
     {% endblock content %}

@@ -140,6 +140,10 @@ ul {
   margin-top: 3rem;
 }
 
+.stack-l {
+  --space: 3rem;
+}
+
 
 
 .site-header {
@@ -413,9 +417,10 @@ article a:hover {
 }
 
 .switcher {
+  --gap: 3rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: var(--gap);
 }
 
 .switcher > * {
@@ -426,6 +431,14 @@ article a:hover {
 .switcher > :nth-last-child(n+ 4),
 .switcher > :nth-last-child(n+ 4) ~ * {
   flex-basis: 100%;
+}
+
+.masonry-column picture {
+  display: block;
+}
+
+.masonry-column picture + picture {
+  margin-block-start: var(--gap);
 }
 
 .datestamp {
