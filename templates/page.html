@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+  <article class="center stack">
+    <div class="post-excerpt">
+      {{ page.description }}
+    </div>
+    {{ page.content | safe }}
+
+  </article>
+  
+ 
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="switcher">
+  {% for page in section.pages %}
+  <article class="text-center story-preview">
+    <a href="{{ page.permalink }}">
+    <figure>
+      
+        {% set sml = resize_image(path=page.extra.page_image, width=640, op="fit_width")%}
+        {% set med = resize_image(path=page.extra.page_image, width=1280, op="fit_width")%}
+        {% set lrg = resize_image(path=page.extra.page_image, width=2560, op="fit_width")%}
+        <img class="post-image" srcset="{{ sml.url}} 640w, {{ med.url }} 1280w, {{ lrg.url }} 2560w" src="{{ med.url }}" alt="{{ page.title }}" loading="lazy">
+      
+    </figure>
+    <p class="datestamp">{{ page.date | date(format="%B %m, %Y") }}</p>
+    <h2 class="subheading mb1">{{ page.title }}</h2>
+    </a>
+    <div class="caption post-tags">
+      {% for tag in page.taxonomies.tags %}
+        <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>
+        {% if not loop.last %}
+          &middot;
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </article>
+
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+  
+  {% block content %}
+  
+  <main class="content-area">
+    <h1>All tags</h1>
+    <ul>
+    {% for t in terms %}
+    <li><a href="{{ t.permalink }}">{{ t.name }} ({{ t.pages | length }})</a></li>
+    {% endfor %}
+    </ul>
+  </main>
+
+
+{% endblock content %}

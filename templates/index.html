@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website" />
+  <meta name="og:site_name" content="Jamie Dumont Photography">
+  <meta property="og:locale" content="en_GB" />
+
+  <link rel="icon" href="{{ get_url(path="favicon.svg", trailing_slash=false) | safe }}" />
+
+  <!-- Page metadata -->
+  {% if section.title %}
+  <title>{{ section.title }} &middot; {{ config.title }}</title>
+  <meta name="og:title" content="{{ section.title }}" />
+  <meta name="twitter:title" content="{{ section.title }}" />
+  {% elif page.title %}
+  <title>{{ page.title }} &middot; {{ config.title }}</title>
+  <meta name="og:title" content="{{ page.title }}" />
+  <meta name="twitter:title" content="{{ page.title }}" />
+  {% else %}
+  <title>{{ config.title }}</title>
+  <meta name="og:title" content="{{ config.title }}" />
+  <meta name="twitter:title" content="{{ config.title }}" />
+  {% endif %}
+
+  {% if section.description %}
+  <meta name="description" content="{{ section.description }}" />
+  <meta name="og:description" content="{{ section.description }}" />
+  <meta name="twitter:description" content="{{ section.description }}" />
+  {% elif page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  <meta name="og:description" content="{{ page.description }}" />
+  <meta name="twitter:description" content="{{ page.description }}" />
+  {% else %}
+  <meta name="description" content="{{ config.description }}" />
+  <meta name="og:description" content="{{ config.description }}" />
+  <meta name="twitter:description" content="{{ config.description }}" />
+  {% endif %}
+
+  {% if page.extra.page_image %}
+  {% set image = resize_image(path=page.extra.page_image, width=1280, op="fit_width")%}
+  <meta property="og:image" content="{{ image.url }}">
+  <meta property="og:image:alt" content="{{ page.extra.page_image_alt }}">
+  {% endif %}
+
+  {% if current_url %}
+  <link rel="canonical" href="{{ current_url }}" />
+  <meta name="twitter:url" content="{{ current_url }}">
+  <meta name="og:url" content="{{ current_url }}">
+  {% endif %}
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="{{ get_url(path="styles.css", trailing_slash=false) | safe }}">
+
+  {% block extra_css %}
+  <link rel="stylesheet" href="/js/vendor/swiper/8.3.2/swiper-bundle.min.css" />
+  {% endblock extra_css %}
+
+  <!-- Fathom - beautiful, simple website analytics -->
+  <script src="https://cdn.usefathom.com/script.js" data-site="RZGBHNQN" defer></script>
+  <!-- / Fathom -->
+
+
+
+
+</head>
+
+<body>
+  {% block header %}
+  <header>
+    <a class="heading" href="/">
+      Jamie Dumont
+      <span class="center subheading">Photographer</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li class="">
+          <a href="{{ get_url(path="stories",
+              trailing_slash=true) | safe }}">Stories</a>
+        </li>
+        <li>
+          <a href="{{ get_url(path="portfolio/people",
+              trailing_slash=true) | safe }}">People</a>
+        </li>
+        <li class="">
+          <a href="{{ get_url(path="about",
+              trailing_slash=true) | safe }}">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  {% endblock header %}
+  <main class="stack">
+    
+    {% block content %}
+
+    <section class="home-gallery">
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          {% set stories = get_section(path="stories/_index.md") %}
+          {% for story in stories.pages | sort(attribute="date") | reverse %}         
+            {% include "partials/slide.html" %}
+          {% endfor %}
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <section>
+    </section>
+    
+    {% endblock content %}
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="copyright">
+      All images &copy; Jamie Dumont
+    </div>
+  </footer>
+
+
+  {% block extra_js %}
+    <script type="module" src="/js/swiper.js"></script>
+  {% endblock extra_js %}
+
+</body>
+
+</html>

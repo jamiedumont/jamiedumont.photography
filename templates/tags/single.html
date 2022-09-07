@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+  
+  <main class="content-area">
+    <h1>Links tagged with: <span class="tag">{{ term.name }}</span></h1>
+    
+    <ul>
+    {% for p in term.pages %}
+      <li><a href="{{ p.permalink }}">{{ p.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </main>
+
+{% endblock content %}

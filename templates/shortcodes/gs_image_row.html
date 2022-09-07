@@ -1,0 +1,25 @@
+{#
+  Args: images [], alts[], caption 
+#}
+
+{% if images | length == 2 %}
+  {% set width = 1200 %}
+{% else %}
+  {% set width = 800 %}
+{% endif %}
+<figure class="wider">
+  <div class="image-row">
+  {% for path in images %}
+  {% set image_webp = resize_image(path=path, width=width, op="fit_width", format="webp") %}
+  {% set image_jpg = resize_image(path=path, width=width, op="fit_width") %}
+  <picture style="flex: {{ image_jpg.width / image_jpg.height }};">
+    <source srcset="{{ image_webp.url }}" type="image/webp">
+    <source srcset="{{ image_jpg.url }}" type="image/jpeg">
+    <img src="{{ image_jpg.url }}" alt="{{ alts[loop.index0] }}"/>
+  </picture>
+  {% endfor %}
+  </div>
+  {% if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {% endif %}
+</figure>
